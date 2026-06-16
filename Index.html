@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Win Nweike.com | Gospel Songs & Teachings</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts (Cinzel for elegance, Lato for readability) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --gold-primary: #D4AF37;
+            --gold-light: #F3E5AB;
+            --gold-dark: #AA8C2C;
+            --white: #FFFFFF;
+            --off-white: #FAFAFA;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--off-white);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .brand-font {
+            font-family: 'Cinzel', serif;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold-primary); 
+            border-radius: 4px;
+        }
+
+        /* Gold Gradient Text */
+        .text-gold-gradient {
+            background: linear-gradient(to right, var(--gold-dark), var(--gold-primary), var(--gold-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Button Styles */
+        .btn-gold {
+            background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-dark) 100%);
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+            filter: brightness(1.1);
+        }
+
+        /* Card Hover Effects */
+        .content-card {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        .content-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold-primary);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        /* Input Focus */
+        .search-input:focus {
+            outline: none;
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Navigation Link Hover */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--gold-primary);
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Header / Navbar -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo Area -->
+            <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
+                <!-- Generated Logo Image will be injected here via JS or we use a placeholder structure -->
+                <div id="logo-container" class="w-12 h-12 flex items-center justify-center bg-black rounded-full border-2 border-[#D4AF37] overflow-hidden">
+                    <!-- Fallback text if image fails to load immediately -->
+                    <span class="text-[#D4AF37] font-bold text-xl brand-font">WN</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-bold brand-font tracking-wide text-gray-800">Win Nweike<span class="text-[#D4AF37]">.com</span></span>
+                    <span class="text-xs text-gray-500 uppercase tracking-widest">Gospel & Teachings</span>
+                </div>
+            </div>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="#" class="nav-link text-gray-700 hover:text-[#D4AF37] font-medium transition">Home</a>
+                <a href="#songs" class="nav-link text-gray-700 hover:text-[#D4AF37] font-medium transition">Songs</a>
+                <a href="#teachings" class="nav-link text-gray-700 hover:text-[#D4AF37] font-medium transition">Teachings</a>
+                <a href="#about" class="nav-link text-gray-700 hover:text-[#D4AF37] font-medium transition">About</a>
+                <button class="btn-gold px-6 py-2 rounded-full font-semibold text-sm tracking-wide">
+                    Subscribe
+                </button>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-2xl text-[#D4AF37]" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 p-4 absolute w-full shadow-lg">
+            <a href="#" class="block py-2 text-gray-700 hover:text-[#D4AF37]">Home</a>
+            <a href="#songs" class="block py-2 text-gray-700 hover:text-[#D4AF37]">Songs</a>
+            <a href="#teachings" class="block py-2 text-gray-700 hover:text-[#D4AF37]">Teachings</a>
+            <a href="#about" class="block py-2 text-gray-700 hover:text-[#D4AF37]">About</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-white py-20 lg:py-32 overflow-hidden">
+        <!-- Decorative Background Elements -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-[#D4AF37] opacity-5 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-[#D4AF37] opacity-5 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
+
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 text-gray-800 leading-tight">
+                Discover the Sound of <br>
+                <span class="text-gold-gradient">Grace & Truth</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+                Your premier destination for uplifting gospel songs and profound biblical teachings. Feed your spirit today.
+            </p>
+
+            <!-- Search Bar Component -->
+            <div class="max-w-2xl mx-auto relative group">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <i class="fas fa-search text-gray-400 group-focus-within:text-[#D4AF37] transition"></i>
+                </div>
+                <input type="text" 
+                       id="mainSearch"
+                       class="search-input w-full pl-12 pr-32 py-4 rounded-full border border-gray-200 bg-white shadow-lg text-gray-700 placeholder-gray-400 transition-all" 
+                       placeholder="Search for songs, sermons, or topics...">
+                <button onclick="performSearch()" class="absolute right-2 top-2 bottom-2 bg-[#D4AF37] hover:bg-[#AA8C2C] text-white px-6 rounded-full font-medium transition-colors duration-300">
+                    Search
+                </button>
+            </div>
+
+            <!-- Quick Commands / Tags -->
+            <div class="mt-8 flex flex-wrap justify-center gap-3">
+                <span class="text-sm text-gray-500 mr-2 pt-1">Trending:</span>
+                <button onclick="quickSearch('Worship')" class="px-4 py-1 rounded-full border border-[#D4AF37] text-[#D4AF37] text-sm hover:bg-[#D4AF37] hover:text-white transition">#Worship</button>
+                <button onclick="quickSearch('Faith')" class="px-4 py-1 rounded-full border border-[#D4AF37] text-[#D4AF37] text-sm hover:bg-[#D4AF37] hover:text-white transition">#Faith</button>
+                <button onclick="quickSearch('Healing')" class="px-4 py-1 rounded-full border border-[#D4AF37] text-[#D4AF37] text-sm hover:bg-[#D4AF37] hover:text-white transition">#Healing</button>
+                <button onclick="quickSearch('Praise')" class="px-4 py-1 rounded-full border border-[#D4AF37] text-[#D4AF37] text-sm hover:bg-[#D4AF37] hover:text-white transition">#Praise</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Grid -->
+    <main class="flex-grow container mx-auto px-6 py-12">
+        
+        <!-- Filter Tabs -->
+        <div class="flex justify-center mb-12 border-b border-gray-200">
+            <button class="px-6 py-3 text-[#D4AF37] border-b-2 border-[#D4AF37] font-bold brand-font">All Resources</button>
+            <button class="px-6 py-3 text-gray-500 hover:text-[#D4AF37] font-medium transition">Latest Songs</button>
+            <button class="px-6 py-3 text-gray-500 hover:text-[#D4AF37] font-medium transition">Sermons</button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="contentGrid">
+            <!-- Content Item 1: Song -->
+            <div class="content-card bg-white rounded-xl overflow-hidden shadow-sm group">
+                <div class="relative h-48 bg-gray-100 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80&w=800" alt="Music" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute top-3 right-3 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-[#D4AF37] uppercase tracking-wider">
